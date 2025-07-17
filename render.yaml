@@ -7,12 +7,12 @@ services:
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
       python manage.py migrate --no-input
-    startCommand: gunicorn Base.wsgi:application --log-file -
+    startCommand: gunicorn Portfolio.wsgi:application --log-file -
     branch: main
     autoDeploy: true
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: portfolio.settings
+        value: Portfolio.settings
       - key: SECRET_KEY           # add in Render UI (keep value hidden!)
         sync: false
       - key: DATABASE_URL         # auto‑generated when you add a DB
