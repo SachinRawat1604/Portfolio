@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <nav id="navbar" class="flex s-round bg-color">
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars" id="menu-icon"></i>
+        </div>
+        
+        <div class="left-nav">
+            <h2 class="t-white">Portfolio</h2>
+        </div>
+        
+        <div class="right-nav" id="nav-menu">
+            <ul>
+                <li><a class="nav-link" href="#home" class="t-white robot">Home <i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#about" class="t-white robot">About Me <i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#skills" class="t-white robot">Skills <i class="fa-solid fa-code"></i></a></li>
+                <li><a href="#projects" class="t-white robot">Projects <i class="fa-solid fa-diagram-project"></i></a></li>
+                <li><a href="#contact" class="t-white robot">Contact <i class="fa-solid fa-rocket"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="flex s-around sw-80 m-auto">
+        <div class="home-left flex items-center">
+            <div class="home-content">
+                <h1 class="popinss">Hello, I'm</h1>
+                <h1 class="t-white">Sachin Rawat</h1>
+                <h3 class="t-white">Software Developer | Data Science & Analyst | AI and ML Enthusiast</h3>
+
+                <div class="social-icons" style="margin-top: 1rem;">
+                    <a href="https://www.linkedin.com/in/sachin-rawat-sr1604" target="_blank" class="t-white" style="margin-right: 1rem; font-size: 24px;">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/SachinRawat1604" target="_blank" class="t-white" style="font-size: 24px;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+
+                <a href="{% static 'pdf/Resume.pdf' %}" target="_blank" class="btn btn-primary">Download Resume</a>
+                <a class="btn live popinss" href="#contact">Let's Talk</a>
+                
+            </div>
+        </div>
+        <div class="home-right flex s-center items-center">
+            <div class="circle flex s-center items-center" id="mainimage">
+                <img src="{% static 'images/Portfolioimg.jpg' %}" alt="Profile Image" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h1 class="t-center my-2 t-white f-2">About Me</h1>
+        <div class="about-content flex s-around sw-80 m-auto">
+            <div class="about-left flex s-center items-center">
+                <img src="{% static 'images/Portfolioimg.jpg' %}" alt="About Image" class="profile-img"> 
+            </div>
+            <div class="about-right flex">
+                <div class="about-content">
+                    <h1 class="t-white m-b-1 popinss"> Hey there! I'm Sachin Rawat 👋</h1>
+                    <p class="t-white" style="white-space: pre-line;">
+                        A software developer, data enthusiast, and certified bug-hunter (self-proclaimed, but still). I recently completed my B.Tech in Computer Science, and ever since then, I've been on a quest to turn coffee and curiosity into clean, working code (emphasis on "working").
+
+                        From building dashboards that make data look beautiful, to training machine learning models that *almost* predict the future — I’ve loved every bit of it. My toolbox includes Python, Django, Pandas, scikit-learn, and the occasional Ctrl+Z panic.
+
+                        I thrive on solving problems, learning fast, and celebrating small wins (like fixing a CSS bug that took 2 hours and one identity crisis). I may be a fresher, but I bring the energy of someone who’s ready to take on real-world challenges — with or without internet (though preferably with).
+
+                        If you're looking for someone who codes, learns, laughs, and is always up for building something cool — let’s talk!
+                    </p>
+                    <a href="#contact" class="btn">Hire Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <h1 class="t-center my-2 t-white f-2">Skills</h1>
+        <div class="skills-grid sw-80 m-auto">
+            
+            <!-- Skill Card -->
+            <div class="skill-card">
+                <img src="{% static 'Programming/python.jpeg' %}" alt="Python">
+                <p>Python</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/html.png' %}" alt="HTML">
+                <p>HTML</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/css.png' %}" alt="CSS">
+                <p>CSS</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/Django.png' %}" alt="Django">
+                <p>Django</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/Flask.png' %}" alt="Flask">
+                <p>Flask</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/scikit-learn.png' %}" alt="Scikit-Learn">
+                <p>Scikit-Learn</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/Pandas.png' %}" alt="Pandas">
+                <p>Pandas</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/Numpy.png' %}" alt="NumPy">
+                <p>NumPy</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/Matplotlib.jpeg' %}" alt="Matplotlib">
+                <p>Matplotlib</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/mysql.png' %}" alt="MYSQL">
+                <p>MYSQL</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/Powerbi.jpeg' %}" alt="Power BI">
+                <p>Power BI</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="{% static 'Programming/tableau.png' %}" alt="Tableau">
+                <p>Tableau</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h1 class="t-center my-2 t-white f-2">Projects</h1>
+        <div class="projects-container sw-80 m-auto">
+            {% for project in projects %}
+            <div class="project-card">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                <div class="project-links">
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" target="_blank">GitHub</a>
+                    {% endif %}
+                    {% if project.live_link %}
+                    <a href="{{ project.live_link }}" target="_blank">Live</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <!-- Contact Me Section -->
+    <section id="contact" class="m-b-1">
+        <h1 class="t-center my-2 t-white f-2">Contact Me</h1>
+        <div class="content-container flex s-around items-center h-50">
+            <div class="form" id="contactform">
+                <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="form-div">
+                        <input type="text" name="name" id="name" class="popinss" placeholder="Enter your Name" aria-label="Name" required>
+                    </div>
+                    <div class="form-div">
+                        <input type="email" name="email" id="email" class="popinss" placeholder="Enter your Email" aria-label="Email" required>
+                    </div>
+                    <div class="form-div">
+                        <input type="tel" name="number" id="number" class="popinss" placeholder="Enter your Phone Number" aria-label="Phone Number" required>
+                    </div>
+                    <div class="form-div">
+                        <textarea name="content" id="textarea" cols="30" rows="10" class="popinss" placeholder="Enter your Message" aria-label="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn popinss" id="submit">Submit</button>
+                </form>
+                {% if success %}
+                <p class="success-message">Thank you for your message!</p>
+                {% endif %}
+                {% if error %}
+                <p class="error-message">There was an error sending your message. Please try again later.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <ul class="flex s-center w-80 m-auto my-2 res">
+            <li><a href="#home" class="popiness">Home</a></li>
+            <li><a href="#about" class="popiness">About Me</a></li>
+            <li><a href="#skills" class="popiness">Skills</a></li>
+            <li><a href="#projects" class="popiness">Projects</a></li>
+            <li><a href="#home" class="popiness">Portfolio</a></li>
+        </ul>
+
+        <ul class="flex s-center w-80 font-awesome">
+            <li><a href="https://www.linkedin.com/in/sachin-rawat-sr1604" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            <li><a href="https://github.com/SachinRawat1604" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+        </ul>
+
+        <p class="t-center my-2 popiness">© 2023 Sachin Rawat. All rights reserved.
+            <span class="cpy-white popiness">Error by Night</span>
+        </p>
+    </footer>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        if (mobileMenu && navMenu && menuIcon) {
+            mobileMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+
+                // Toggle between hamburger and X icon
+                if (navMenu.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Close menu when a nav link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+    });
+</script>
+
+
+</html>
