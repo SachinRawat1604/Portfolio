@@ -2,8 +2,8 @@ services:
   - type: web
     name: sachin-portfolio
     env: python
-    plan: free        # upgrade later if needed
-    buildCommand:
+    plan: free
+    buildCommand: |
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
       python manage.py migrate --no-input
@@ -13,9 +13,15 @@ services:
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: Portfolio.settings
-      - key: SECRET_KEY           # add in Render UI (keep value hidden!)
+      - key: SECRET_KEY
         sync: false
-      - key: DATABASE_URL         # auto‑generated when you add a DB
+      - key: DATABASE_URL
         sync: false
       - key: PYTHON_VERSION
         value: "3.11"
+      - key: RENDER
+        value: "true"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
