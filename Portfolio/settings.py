@@ -78,6 +78,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "Portfolio.wsgi.application"
 
+# Custom authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    # ... any custom backends
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
