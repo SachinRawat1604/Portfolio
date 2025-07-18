@@ -91,15 +91,18 @@ WSGI_APPLICATION = "Portfolio.wsgi:application"
     
 }'''
 
-if os.getenv('RENDER'):  # Only set when deployed on Render
+# Database configuration
+if os.getenv('DATABASE_URL'):
+    # Production database (Render will set DATABASE_URL automatically)
     DATABASES = {
         'default': dj_database_url.config(
-            default=f"sqlite:///{BASE_DIR}/db.sqlite3",
+            default=os.getenv('DATABASE_URL'),
             conn_max_age=600,
             ssl_require=True
         )
     }
 else:
+    # Local development database
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
