@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from pickle import TRUE
 import dj_database_url, os, pathlib
 from decouple import config
 from dotenv import load_dotenv
@@ -29,9 +30,9 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4&1(ol=q_$)rdt_-w*1k(^#(l3fpl$3-)7mv4$zx_qak#e8g+^')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = TRUE
 
-ALLOWED_HOSTS = ["https://sachin-portfolio-rd6a.onrender.com", ".onrender.com", "localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -92,7 +93,11 @@ WSGI_APPLICATION = "Portfolio.wsgi:application"
 
 if os.getenv('RENDER'):  # Only set when deployed on Render
     DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+        'default': dj_database_url.config(
+            default=f"sqlite:///{BASE_DIR}/db.sqlite3",
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
 else:
     DATABASES = {
