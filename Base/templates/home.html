@@ -159,23 +159,141 @@
 
     <!-- Projects Section -->
     <section id="projects">
-        <h1 class="t-center my-2 t-white f-2">Projects</h1>
+        <h1 class="t-center my-2 t-white f-2">My Projects</h1>
         <div class="projects-container sw-80 m-auto">
-            {% for project in projects %}
-            <div class="project-card">
-                <img src="{{ project.image.url }}" alt="{{ project.title }}">
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
+            
+            <!-- Project Card 1 -->
+            <div class="project-card loading" style="animation-delay: 0.1s;">
+                <img src="static/project_images/stock_price.png" alt="Simple Stock Price" class="project-image">
+                <h3>Simple Stock Price</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">yfinance</span>
+                </div>
+                <p>A simple stock price tracking application that allows users to view real-time stock prices, historical data, and basic analytics. Built with a user-friendly interface and responsive design.</p>
                 <div class="project-links">
-                    {% if project.github_link %}
-                    <a href="{{ project.github_link }}" target="_blank">GitHub</a>
-                    {% endif %}
-                    {% if project.live_link %}
-                    <a href="{{ project.live_link }}" target="_blank">Live</a>
-                    {% endif %}
+                    <a href="https://github.com/SachinRawat1604/Simple-Stock-Price.git" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
                 </div>
             </div>
-            {% endfor %}
+
+            <!-- Project Card 2 -->
+            <div class="project-card loading" style="animation-delay: 0.2s;">
+                <img src="static/project_images/Data_Analysis.png" alt="Data Analytics Dashboard" class="project-image">
+                <h3>KPMG Data Analysis and Dashboard Project</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">Jupyter Notebook</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Excel</span>
+                </div>
+                <p>This project focuses on performing data analysis on the KPMG dataset and building a dashboard to gain meaningful insights. The goal is to apply data analysis concepts to solve real-world business problems and improve decision-making. The project is designed to enhance data interpretation skills and prepare for machine learning roles by understanding data processing and visualization techniques.</p>
+                <div class="project-links">
+                    <a href="https://github.com/SachinRawat1604/KMPG-Data-Analysis.git" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card loading" style="animation-delay: 0.3s;">
+                <img src="static/project_images/house_price_predictor.png" alt="Machine Learning Price Predictor" class="project-image">
+                <h3>Boston-Housing-Price-Prediction-Model</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Matplotlib</span>
+                </div>
+                <p>This project focuses on predicting Boston housing prices using various features available in the dataset. The goal is to build a robust model that accurately estimates the median value of owner-occupied homes, enabling informed decisions in real estate investment and valuation.</p>
+                <div class="project-links">
+                    <a href="https://github.com/SachinRawat1604/Boston-Housing-Price-Prediction-Model.git" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="project-card loading" style="animation-delay: 0.4s;">
+                <img src="static/project_images/TaskManagement.png" alt="Task Management App" class="project-image">
+                <h3>Task Management Web App with Flask</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">CSS</span>
+                </div>
+                <p>A simple and intuitive task management web application built using Flask. This application allows users to add, view, and manage their tasks efficiently.</p>
+                <div class="project-links">
+                    <a href="https://github.com/SachinRawat1604/Task-Management-Web-App-with-Flask.git" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 5 -->
+            <div class="project-card loading" style="animation-delay: 0.5s;">
+                <img src="static/project_images/chatbot.png" alt="Chatbot" class="project-image">
+                <h3>Chatbot Using Logistic Regression</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">NLTK</span>
+                    <span class="tech-tag">Scikit-Learn</span>
+                </div>
+                <p>A simple and interactive chatbot built using Logistic Regression, TF-IDF Vectorization, and Streamlit for the interface. This chatbot uses predefined intents and patterns to provide relevant responses.</p>
+                <div class="project-links">
+                    <a href="https://github.com/SachinRawat1604/Chatbot-Using-Logistic-Regression.git" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 6 -->
+            <div class="project-card loading" style="animation-delay: 0.6s;">
+                <img src="static/project_images/Portfolio.png" alt="Portfolio Website" class="project-image">
+                <h3> Portfolio Website</h3>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+
+                </div>
+                <p>Responsive personal portfolio website showcasing projects, skills, and experience. Features smooth animations, contact form with email integration, and admin panel for content management.</p>
+                <div class="project-links">
+                    <a href="https://github.com/SachinRawat1604/Portfolio.git" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                    <a href="https://sachin-portfolio-rd6a.onrender.com" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -265,6 +383,29 @@
                 });
             });
         }
+    });
+
+    // Add loading animation to project cards
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';                  
+                }
+            });
+        }, observerOptions);
+
+        projectCards.forEach(card => {
+            observer.observe(card);
+        });
     });
 </script>
 
