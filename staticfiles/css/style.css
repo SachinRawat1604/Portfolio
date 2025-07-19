@@ -1,3 +1,12 @@
+/* ========== Favicon ========== */
+favicon.ico
+favicon-16x16.png
+favicon-32x32.png
+apple-touch-icon.png
+android-chrome-192x192.png
+android-chrome-512x512.png
+site.webmanifest
+
 /* ========== GLOBAL STYLES ========== */
 body {
     margin: 0;
@@ -293,57 +302,196 @@ html {
 /* ========== PROJECTS ========== */
 #projects {
     padding: 4rem 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#projects h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
+    padding: 2rem 0;
 }
 
 .project-card {
-    background-color: #1e1e1e;
-    border-radius: 12px;
-    padding: 1rem;
-    color: #fff;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
-    transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.project-card img {
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;   
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {    
+    transform: scale(1.05);
 }
 
 .project-card h3 {
-    margin: 0.5rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+    font-weight: 600;
 }
 
 .project-card p {
-    font-size: 0.9rem;
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
 }
 
 .project-links a {
-    display: inline-block;
-    margin-right: 1rem;
-    color: #00ffff;
-    font-weight: bold;
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #764ba2 0%, #667eea 100%);
+    transition: left 0.3s ease;    
+    z-index: -1;
+}
+
+.project-links a:hover::before {
+    left: 0;
 }
 
 .project-links a:hover {
-    color: #01caca;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+.project-links a i {
+    margin-right: 0.5rem;
+    }
+
+
+    /* Technology Tags */
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
+.tech-tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .sw-80 {
+        max-width: 95%;
+        }
+
+    .project-links {
+        flex-direction: column;
+        gap: 0.8rem;
+        }
+
+    .project-links a {
+        text-align: center;
+    }
+
+    @media (max-width: 480px) {
+        .project-card {
+            padding: 1rem;
+        }
+
+        .project-image {
+            height: 150px;
+        }
+
+        #projects h1 {
+            font-size: 1.8rem;
+        }
+    }
+
+    /* Loading Animation */
+    .project-card.loading {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
 
 /* ========== CONTACT SECTION ========== */
 #contact {
