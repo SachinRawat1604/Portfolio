@@ -6,80 +6,218 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sachin Rawat - Portfolio</title>
 
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="{% static 'favicons/favicon.ico' %}">
-<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
-<link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
-<link rel="manifest" href="{% static 'favicons/site.webmanifest' %}">
-<link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicons/android-chrome-192x192.png' %}">
-<link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicons/android-chrome-512x512.png' %}">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'favicons/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'favicons/site.webmanifest' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicons/android-chrome-512x512.png' %}">
 
-
-
+    <!-- CSS and Fonts -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Responsive design styles -->
+    <style>
+        /* Base styles: assume your CSS provides a mobile-first layout */
+
+        /* Responsive navbar */
+        #navbar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            flex-wrap: wrap;
+        }
+        #navbar .left-nav {
+            flex: 1;
+        }
+        #navbar .right-nav ul {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #navbar .right-nav {
+            transition: max-height 0.3s ease;
+        }
+        .menu-toggle {
+            display: none;
+        }
+        /* Responsive sections layout */
+        .flex {
+            display: flex;
+        }
+        .home-left, .home-right {
+            flex: 1 1 50%;
+        }
+        .sw-80 {
+            width: 80%;
+        }
+        .m-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 2rem;
+            width: 100%;
+        }
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 2rem;
+        }
+        /* Adaptive: medium tablets */
+        @media (max-width: 900px) {
+            .skills-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+            .projects-container {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+        /* Adaptive: mobile devices */
+        @media (max-width: 650px) {
+            .sw-80 {
+                width: 97%;
+            }
+            #navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+            }
+            #navbar .right-nav ul {
+                flex-direction: column;
+                gap: 1.2rem;
+                width: 100%;
+            }
+            #navbar .right-nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                background: #131a22;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 2px 5px 10px rgba(0,0,0,0.05);
+                transition: max-height 0.3s ease;
+            }
+            #navbar .right-nav.active {
+                max-height: 300px;
+                padding: 1rem 0;
+            }
+            .menu-toggle {
+                display: block;
+                color: #fff;
+                font-size: 2rem;
+                cursor: pointer;
+                background: none;
+                border: none;
+                margin-bottom: 1rem;
+            }
+            .flex, .about-content {
+                flex-direction: column;
+            }
+            .home-left, .home-right, .about-left, .about-right {
+                width: 100%;
+                margin: 0 auto 1.5rem auto;
+            }
+            .skills-grid, .projects-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .project-card {
+                max-width: 100%;
+            }
+            .about-content {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .content-container {
+                flex-direction: column;
+            }
+        }
+        /* Utility to not break form on small devices */
+        .form-div input,
+        .form-div textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        /* Footer responsiveness */
+        #footer ul {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        @media (max-width: 600px) {
+            #footer ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <meta name="description" content="Portfolio website of Sachin Rawat, a Software Developer, Data Science & Analyst, AI and ML Enthusiast. Explore projects, skills, and get in touch!">
+    <meta name="keywords" content="Sachin Rawat, Portfolio, Software Developer, Data Science, AI, ML, Python, Django">
 </head>
 <body>
-
     <!-- Navbar Section -->
-    <nav id="navbar" class="flex s-round bg-color">
-        
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fas fa-bars" id="menu-icon"></i>
+    <nav id="navbar" class="flex s-round bg-color" aria-label="Main navigation">
+        <div class="menu-toggle" id="mobile-menu" aria-label="Open Navigation" tabindex="0">
+            <i class="fas fa-bars" id="menu-icon" aria-hidden="true"></i>
         </div>
-        
         <div class="left-nav">
             <h2 class="t-white">Portfolio</h2>
         </div>
-        
         <div class="right-nav" id="nav-menu">
             <ul>
-                <li><a class="nav-link" href="#home" class="t-white robot">Home <i class="fa-solid fa-house"></i></a></li>
-                <li><a href="#about" class="t-white robot">About Me <i class="fa-solid fa-user"></i></a></li>
-                <li><a href="#skills" class="t-white robot">Skills <i class="fa-solid fa-code"></i></a></li>
-                <li><a href="#projects" class="t-white robot">Projects <i class="fa-solid fa-diagram-project"></i></a></li>
-                <li><a href="#contact" class="t-white robot">Contact <i class="fa-solid fa-rocket"></i></a></li>
+                <li><a class="nav-link t-white robot" href="#home">Home <i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#about" class="t-white robot nav-link">About Me <i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#skills" class="t-white robot nav-link">Skills <i class="fa-solid fa-code"></i></a></li>
+                <li><a href="#projects" class="t-white robot nav-link">Projects <i class="fa-solid fa-diagram-project"></i></a></li>
+                <li><a href="#contact" class="t-white robot nav-link">Contact <i class="fa-solid fa-rocket"></i></a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Home Section -->
-    <section id="home" class="flex s-around sw-80 m-auto">
+    <section id="home" class="flex s-around sw-80 m-auto" tabindex="-1">
         <div class="home-left flex items-center">
             <div class="home-content">
                 <h1 class="popinss">Hello, I'm</h1>
                 <h1 class="t-white">Sachin Rawat</h1>
                 <h3 class="t-white">Software Developer | Data Science & Analyst | AI and ML Enthusiast</h3>
-
                 <div class="social-icons" style="margin-top: 1rem;">
-                    <a href="https://www.linkedin.com/in/sachin-rawat-sr1604" target="_blank" class="t-white" style="margin-right: 1rem; font-size: 24px;">
+                    <a href="https://www.linkedin.com/in/sachin-rawat-sr1604" rel="noopener" target="_blank" class="t-white" aria-label="LinkedIn" style="margin-right: 1rem; font-size: 24px;">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/SachinRawat1604" target="_blank" class="t-white" style="font-size: 24px;">
+                    <a href="https://github.com/SachinRawat1604" rel="noopener" target="_blank" class="t-white" aria-label="GitHub" style="font-size: 24px;">
                         <i class="fab fa-github"></i>
                     </a>
                 </div>
-
-                <a href="{% static 'pdf/Resume.pdf' %}" target="_blank" class="btn btn-primary">Download Resume</a>
-                <a class="btn live popinss" href="#contact">Let's Talk</a>
-                
+                <a href="{% static 'pdf/Resume.pdf' %}" target="_blank" class="btn btn-primary" rel="noopener" aria-label="Download Resume">Download Resume</a>
+                <a class="btn live popinss" href="#contact" aria-label="Contact Me">Let's Talk</a>
             </div>
         </div>
         <div class="home-right flex s-center items-center">
             <div class="circle flex s-center items-center" id="mainimage">
-                <img src="{% static 'images/Portfolioimg.jpg' %}" alt="Profile Image" class="profile-img">
+                <img src="{% static 'images/Portfolioimg.jpg' %}" alt="Sachin Rawat Profile Image" class="profile-img" loading="lazy">
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" tabindex="-1">
         <h1 class="t-center my-2 t-white f-2">About Me</h1>
         <div class="about-content flex s-around sw-80 m-auto">
             <div class="about-left flex s-center items-center">
-                <img src="{% static 'images/Portfolioimg.jpg' %}" alt="About Image" class="profile-img"> 
+                <img src="{% static 'images/Portfolioimg.jpg' %}" alt="About Sachin Rawat" class="profile-img" loading="lazy"> 
             </div>
             <div class="about-right flex">
                 <div class="about-content">
@@ -93,90 +231,38 @@
 
                         If you're looking for someone who codes, learns, laughs, and is always up for building something cool — let’s talk!
                     </p>
-                    <a href="#contact" class="btn">Hire Me</a>
+                    <a href="#contact" class="btn" aria-label="Hire Me">Hire Me</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills-section">
+    <section id="skills" class="skills-section" tabindex="-1">
         <h1 class="t-center my-2 t-white f-2">Skills</h1>
         <div class="skills-grid sw-80 m-auto">
-            
-            <!-- Skill Card -->
-            <div class="skill-card">
-                <img src="{% static 'Programming/python.jpeg' %}" alt="Python">
-                <p>Python</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/html.png' %}" alt="HTML">
-                <p>HTML</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/css.png' %}" alt="CSS">
-                <p>CSS</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/Django.png' %}" alt="Django">
-                <p>Django</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/Flask.png' %}" alt="Flask">
-                <p>Flask</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/scikit-learn.png' %}" alt="Scikit-Learn">
-                <p>Scikit-Learn</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/Pandas.png' %}" alt="Pandas">
-                <p>Pandas</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/Numpy.png' %}" alt="NumPy">
-                <p>NumPy</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/Matplotlib.jpeg' %}" alt="Matplotlib">
-                <p>Matplotlib</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/mysql.png' %}" alt="MYSQL">
-                <p>MYSQL</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/Powerbi.jpeg' %}" alt="Power BI">
-                <p>Power BI</p>
-            </div>
-
-            <div class="skill-card">
-                <img src="{% static 'Programming/tableau.png' %}" alt="Tableau">
-                <p>Tableau</p>
-            </div>
-
+            <!-- Hard coded skills, you can use a context variable for more flexibility -->
+            <div class="skill-card"><img src="{% static 'Programming/python.jpeg' %}" alt="Python"><p>Python</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/html.png' %}" alt="HTML"><p>HTML</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/css.png' %}" alt="CSS"><p>CSS</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/Django.png' %}" alt="Django"><p>Django</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/Flask.png' %}" alt="Flask"><p>Flask</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/scikit-learn.png' %}" alt="Scikit-Learn"><p>Scikit-Learn</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/Pandas.png' %}" alt="Pandas"><p>Pandas</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/Numpy.png' %}" alt="NumPy"><p>NumPy</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/Matplotlib.jpeg' %}" alt="Matplotlib"><p>Matplotlib</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/mysql.png' %}" alt="MYSQL"><p>MYSQL</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/Powerbi.jpeg' %}" alt="Power BI"><p>Power BI</p></div>
+            <div class="skill-card"><img src="{% static 'Programming/tableau.png' %}" alt="Tableau"><p>Tableau</p></div>
         </div>
     </section>
 
-
     <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" tabindex="-1">
         <h1 class="t-center my-2 t-white f-2">My Projects</h1>
         <div class="projects-container sw-80 m-auto">
-            
-            <!-- Project Card 1 -->
             <div class="project-card loading" style="animation-delay: 0.1s;">
-                <img src="static/project_images/stock_price.png" alt="Simple Stock Price" class="project-image">
+                <img src="{% static 'project_images/stock_price.png' %}" alt="Screenshot of Simple Stock Price app" class="project-image" loading="lazy">
                 <h3>Simple Stock Price</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Python</span>
@@ -186,18 +272,16 @@
                 </div>
                 <p>A simple stock price tracking application that allows users to view real-time stock prices, historical data, and basic analytics. Built with a user-friendly interface and responsive design.</p>
                 <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Simple-Stock-Price.git" target="_blank">
-                        <i class="fab fa-github"></i>GitHub
+                    <a href="https://github.com/SachinRawat1604/Simple-Stock-Price.git" rel="noopener" target="_blank" aria-label="Simple Stock Price GitHub">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="#" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    <a href="#" rel="noopener" target="_blank" aria-label="Simple Stock Price Live Demo">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
                     </a>
                 </div>
             </div>
-
-            <!-- Project Card 2 -->
             <div class="project-card loading" style="animation-delay: 0.2s;">
-                <img src="static/project_images/Data_Analysis.png" alt="Data Analytics Dashboard" class="project-image">
+                <img src="{% static 'project_images/Data_Analysis.png' %}" alt="KPMG Data Analysis Dashboard" class="project-image" loading="lazy">
                 <h3>KPMG Data Analysis and Dashboard Project</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Python</span>
@@ -208,20 +292,18 @@
                     <span class="tech-tag">Power BI</span>
                     <span class="tech-tag">Excel</span>
                 </div>
-                <p>This project focuses on performing data analysis on the KPMG dataset and building a dashboard to gain meaningful insights. The goal is to apply data analysis concepts to solve real-world business problems and improve decision-making. The project is designed to enhance data interpretation skills and prepare for machine learning roles by understanding data processing and visualization techniques.</p>
+                <p>This project focuses on performing data analysis on the KPMG dataset and building a dashboard to gain meaningful insights. The goal is to apply data analysis concepts to solve real-world business problems and improve decision-making.</p>
                 <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/KMPG-Data-Analysis.git" target="_blank">
-                        <i class="fab fa-github"></i>GitHub
+                    <a href="https://github.com/SachinRawat1604/KMPG-Data-Analysis.git" rel="noopener" target="_blank" aria-label="KPMG Data Analysis GitHub">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="#" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    <a href="#" rel="noopener" target="_blank" aria-label="KPMG Data Analysis Live Demo">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
                     </a>
                 </div>
             </div>
-
-            <!-- Project Card 3 -->
             <div class="project-card loading" style="animation-delay: 0.3s;">
-                <img src="static/project_images/house_price_predictor.png" alt="Machine Learning Price Predictor" class="project-image">
+                <img src="{% static 'project_images/house_price_predictor.png' %}" alt="Boston Housing Price Predictor screenshot" class="project-image" loading="lazy">
                 <h3>Boston-Housing-Price-Prediction-Model</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Python</span>
@@ -232,18 +314,16 @@
                 </div>
                 <p>This project focuses on predicting Boston housing prices using various features available in the dataset. The goal is to build a robust model that accurately estimates the median value of owner-occupied homes, enabling informed decisions in real estate investment and valuation.</p>
                 <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Boston-Housing-Price-Prediction-Model.git" target="_blank">
-                        <i class="fab fa-github"></i>GitHub
+                    <a href="https://github.com/SachinRawat1604/Boston-Housing-Price-Prediction-Model.git" rel="noopener" target="_blank" aria-label="Boston Housing Prediction GitHub">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="#" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    <a href="#" rel="noopener" target="_blank" aria-label="Boston Housing Prediction Live Demo">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
                     </a>
                 </div>
             </div>
-
-            <!-- Project Card 4 -->
             <div class="project-card loading" style="animation-delay: 0.4s;">
-                <img src="static/project_images/TaskManagement.png" alt="Task Management App" class="project-image">
+                <img src="{% static 'project_images/TaskManagement.png' %}" alt="Task Management App screenshot" class="project-image" loading="lazy">
                 <h3>Task Management Web App with Flask</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Flask</span>
@@ -253,18 +333,16 @@
                 </div>
                 <p>A simple and intuitive task management web application built using Flask. This application allows users to add, view, and manage their tasks efficiently.</p>
                 <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Task-Management-Web-App-with-Flask.git" target="_blank">
-                        <i class="fab fa-github"></i>GitHub
+                    <a href="https://github.com/SachinRawat1604/Task-Management-Web-App-with-Flask.git" rel="noopener" target="_blank" aria-label="Task Management Flask GitHub">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="#" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    <a href="#" rel="noopener" target="_blank" aria-label="Task Management Flask Live Demo">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
                     </a>
                 </div>
             </div>
-
-            <!-- Project Card 5 -->
             <div class="project-card loading" style="animation-delay: 0.5s;">
-                <img src="static/project_images/chatbot.png" alt="Chatbot" class="project-image">
+                <img src="{% static 'project_images/chatbot.png' %}" alt="Chatbot screenshot" class="project-image" loading="lazy">
                 <h3>Chatbot Using Logistic Regression</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Python</span>
@@ -274,68 +352,63 @@
                 </div>
                 <p>A simple and interactive chatbot built using Logistic Regression, TF-IDF Vectorization, and Streamlit for the interface. This chatbot uses predefined intents and patterns to provide relevant responses.</p>
                 <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Chatbot-Using-Logistic-Regression.git" target="_blank">
-                        <i class="fab fa-github"></i>GitHub
+                    <a href="https://github.com/SachinRawat1604/Chatbot-Using-Logistic-Regression.git" rel="noopener" target="_blank" aria-label="Chatbot Logistic Regression GitHub">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="#" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    <a href="#" rel="noopener" target="_blank" aria-label="Chatbot Logistic Regression Live Demo">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
                     </a>
                 </div>
             </div>
-
-            <!-- Project Card 6 -->
             <div class="project-card loading" style="animation-delay: 0.6s;">
-                <img src="static/project_images/Portfolio.png" alt="Portfolio Website" class="project-image">
-                <h3> Portfolio Website</h3>
+                <img src="{% static 'project_images/Portfolio.png' %}" alt="Portfolio Website screenshot" class="project-image" loading="lazy">
+                <h3>Portfolio Website</h3>
                 <div class="project-tech">
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">Django</span>
                     <span class="tech-tag">HTML5</span>
                     <span class="tech-tag">CSS3</span>
                     <span class="tech-tag">JavaScript</span>
-
                 </div>
                 <p>Responsive personal portfolio website showcasing projects, skills, and experience. Features smooth animations, contact form with email integration, and admin panel for content management.</p>
                 <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Portfolio.git" target="_blank">
-                        <i class="fab fa-github"></i>GitHub
+                    <a href="https://github.com/SachinRawat1604/Portfolio.git" rel="noopener" target="_blank" aria-label="Portfolio Website GitHub">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="https://sachin-portfolio-rd6a.onrender.com" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>Live Demo
+                    <a href="https://sachin-portfolio-rd6a.onrender.com" rel="noopener" target="_blank" aria-label="Portfolio Website Live Demo">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
                     </a>
                 </div>
             </div>
-
         </div>
     </section>
 
-
     <!-- Contact Me Section -->
-    <section id="contact" class="m-b-1">
+    <section id="contact" class="m-b-1" tabindex="-1">
         <h1 class="t-center my-2 t-white f-2">Contact Me</h1>
         <div class="content-container flex s-around items-center h-50">
             <div class="form" id="contactform">
-                <form method="post" action="{% url 'contact' %}">
+                <form method="post" action="{% url 'contact' %}" autocomplete="on">
                     {% csrf_token %}
                     <div class="form-div">
-                        <input type="text" name="name" id="name" class="popinss" placeholder="Enter your Name" aria-label="Name" required>
+                        <input type="text" name="name" id="name" class="popinss" placeholder="Enter your Name" aria-label="Name" autocomplete="name" required>
                     </div>
                     <div class="form-div">
-                        <input type="email" name="email" id="email" class="popinss" placeholder="Enter your Email" aria-label="Email" required>
+                        <input type="email" name="email" id="email" class="popinss" placeholder="Enter your Email" aria-label="Email" autocomplete="email" required>
                     </div>
                     <div class="form-div">
-                        <input type="tel" name="number" id="number" class="popinss" placeholder="Enter your Phone Number" aria-label="Phone Number" required>
+                        <input type="tel" name="number" id="number" class="popinss" placeholder="Enter your Phone Number" aria-label="Phone Number" autocomplete="tel" pattern="[0-9\-]{10,15}" required>
                     </div>
                     <div class="form-div">
                         <textarea name="content" id="textarea" cols="30" rows="10" class="popinss" placeholder="Enter your Message" aria-label="Message" required></textarea>
                     </div>
-                    <button type="submit" class="btn popinss" id="submit">Submit</button>
+                    <button type="submit" class="btn popinss" id="submit" aria-label="Submit Contact Form">Submit</button>
                 </form>
                 {% if success %}
-                <p class="success-message">Thank you for your message!</p>
+                    <p class="success-message" role="alert">Thank you for your message!</p>
                 {% endif %}
                 {% if error %}
-                <p class="error-message">There was an error sending your message. Please try again later.</p>
+                    <p class="error-message" role="alert">There was an error sending your message. Please try again later.</p>
                 {% endif %}
             </div>
         </div>
@@ -343,83 +416,72 @@
 
     <!-- Footer Section -->
     <footer id="footer">
-        <ul class="flex s-center w-80 m-auto my-2 res">
+        <ul class="flex s-center w-80 m-auto my-2 res" aria-label="Footer navigation">
             <li><a href="#home" class="popiness">Home</a></li>
             <li><a href="#about" class="popiness">About Me</a></li>
             <li><a href="#skills" class="popiness">Skills</a></li>
             <li><a href="#projects" class="popiness">Projects</a></li>
             <li><a href="#home" class="popiness">Portfolio</a></li>
         </ul>
-
         <ul class="flex s-center w-80 font-awesome">
-            <li><a href="https://www.linkedin.com/in/sachin-rawat-sr1604" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
-            <li><a href="https://github.com/SachinRawat1604" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/sachin-rawat-sr1604" rel="noopener" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            <li><a href="https://github.com/SachinRawat1604" rel="noopener" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
         </ul>
-
-        <p class="t-center my-2 popiness">© 2023 Sachin Rawat. All rights reserved.
+        <p class="t-center my-2 popiness">© 2025 Sachin Rawat. All rights reserved.
             <span class="cpy-white popiness">Error by Night</span>
         </p>
     </footer>
 
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.getElementById('nav-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const navLinks = document.querySelectorAll('.nav-link');
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        if (mobileMenu && navMenu && menuIcon) {
-            mobileMenu.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-
-                // Toggle between hamburger and X icon
-                if (navMenu.classList.contains('active')) {
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-times');
-                } else {
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
-                }
-            });
-
-            // Close menu when a nav link is clicked
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
+            if (mobileMenu && navMenu && menuIcon) {
+                mobileMenu.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    // Toggle between hamburger and X icon
                     if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
+                        menuIcon.classList.remove('fa-bars');
+                        menuIcon.classList.add('fa-times');
+                    } else {
                         menuIcon.classList.remove('fa-times');
                         menuIcon.classList.add('fa-bars');
                     }
                 });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            menuIcon.classList.remove('fa-times');
+                            menuIcon.classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+            // Keyboard accessibility for menu
+            mobileMenu.addEventListener('keypress', function(e){
+                if(e.key === 'Enter' || e.key === ' '){ mobileMenu.click(); }
             });
-        }
-    });
-
-    // Add loading animation to project cards
-    document.addEventListener('DOMContentLoaded', function() {
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';                  
-                }
-            });
-        }, observerOptions);
-
-        projectCards.forEach(card => {
-            observer.observe(card);
         });
-    });
-</script>
 
-
+        // Reveal projects on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            projectCards.forEach(card => { observer.observe(card); });
+        });
+    </script>
+</body>
 </html>
