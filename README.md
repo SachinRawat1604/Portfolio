@@ -11,10 +11,10 @@ This is a personal portfolio website to showcase my skills, projects, and experi
 - Contact form with email integration
 
 ## Technologies Used
-- **Frontend**: HTML, CSS, JavaScript
-- **Framework**: React.js / Vue.js (specify if used)
-- **Styling**: Bootstrap / Tailwind / custom CSS (specify)
-- **Deployment**: Netlify / Vercel / GitHub Pages
+- **Frontend**: HTML, CSS, JavaScript, Django
+- **Framework**: React.js 
+- **Styling**: Bootstrap / Tailwind / custom CSS 
+- **Deployment**: render
 
 ## Getting Started
 
