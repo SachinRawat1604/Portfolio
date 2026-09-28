@@ -28,11 +28,11 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4&1(ol=q_$)rdt_-w*1k(^#(l3fpl$3-)7mv4$zx_qak#e8g+^')
-
+    
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = TRUE
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['RENDER_EXTERNAL_HOSTNAME', 'localhost', '127.0.0.1']
 
 
 # Application definition

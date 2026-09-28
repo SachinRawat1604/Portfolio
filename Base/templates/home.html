@@ -262,129 +262,34 @@
     <section id="projects" tabindex="-1">
         <h1 class="t-center my-2 t-white f-2">My Projects</h1>
         <div class="projects-container sw-80 m-auto">
-            <div class="project-card loading" style="animation-delay: 0.1s;">
-                <img src="{% static 'project_images/stock_price.png' %}" alt="Screenshot of Simple Stock Price app" class="project-image" loading="lazy">
-                <h3>Simple Stock Price</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Streamlit</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">yfinance</span>
+            <div class="projects-container sw-80 m-auto">
+                {% for project in projects %}
+                <div class="project-card loading" style="animation-delay: 0.1s;">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image" loading="lazy">
+                    <h3>{{ project.title }}</h3>
+                    <!-- Note: You don't have a 'tech' field in your model, so I omitted it, or you can add it to models.py -->
+                    <p>{{ project.description }}</p>
+                    <div class="project-links">
+                        {% if project.github_link %}
+                        <a href="{{ project.github_link }}" rel="noopener" target="_blank" aria-label="{{ project.title }} GitHub">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        {% endif %}
+                        {% if project.live_link %}
+                        <a href="{{ project.live_link }}" rel="noopener" target="_blank" aria-label="{{ project.title }} Live Demo">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        {% endif %}
+                    </div>
                 </div>
-                <p>A simple stock price tracking application that allows users to view real-time stock prices, historical data, and basic analytics. Built with a user-friendly interface and responsive design.</p>
-                <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Simple-Stock-Price.git" rel="noopener" target="_blank" aria-label="Simple Stock Price GitHub">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="#" rel="noopener" target="_blank" aria-label="Simple Stock Price Live Demo">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
-            </div>
-            <div class="project-card loading" style="animation-delay: 0.2s;">
-                <img src="{% static 'project_images/Data_Analysis.png' %}" alt="KPMG Data Analysis Dashboard" class="project-image" loading="lazy">
-                <h3>KPMG Data Analysis and Dashboard Project</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Matplotlib</span>
-                    <span class="tech-tag">Seaborn</span>
-                    <span class="tech-tag">Jupyter Notebook</span>
-                    <span class="tech-tag">Power BI</span>
-                    <span class="tech-tag">Excel</span>
-                </div>
-                <p>This project focuses on performing data analysis on the KPMG dataset and building a dashboard to gain meaningful insights. The goal is to apply data analysis concepts to solve real-world business problems and improve decision-making.</p>
-                <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/KMPG-Data-Analysis.git" rel="noopener" target="_blank" aria-label="KPMG Data Analysis GitHub">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="#" rel="noopener" target="_blank" aria-label="KPMG Data Analysis Live Demo">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
-            </div>
-            <div class="project-card loading" style="animation-delay: 0.3s;">
-                <img src="{% static 'project_images/house_price_predictor.png' %}" alt="Boston Housing Price Predictor screenshot" class="project-image" loading="lazy">
-                <h3>Boston-Housing-Price-Prediction-Model</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Scikit-learn</span>
-                    <span class="tech-tag">NumPy</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Matplotlib</span>
-                </div>
-                <p>This project focuses on predicting Boston housing prices using various features available in the dataset. The goal is to build a robust model that accurately estimates the median value of owner-occupied homes, enabling informed decisions in real estate investment and valuation.</p>
-                <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Boston-Housing-Price-Prediction-Model.git" rel="noopener" target="_blank" aria-label="Boston Housing Prediction GitHub">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="#" rel="noopener" target="_blank" aria-label="Boston Housing Prediction Live Demo">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
-            </div>
-            <div class="project-card loading" style="animation-delay: 0.4s;">
-                <img src="{% static 'project_images/TaskManagement.png' %}" alt="Task Management App screenshot" class="project-image" loading="lazy">
-                <h3>Task Management Web App with Flask</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">SQLite</span>
-                    <span class="tech-tag">CSS</span>
-                </div>
-                <p>A simple and intuitive task management web application built using Flask. This application allows users to add, view, and manage their tasks efficiently.</p>
-                <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Task-Management-Web-App-with-Flask.git" rel="noopener" target="_blank" aria-label="Task Management Flask GitHub">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="#" rel="noopener" target="_blank" aria-label="Task Management Flask Live Demo">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
-            </div>
-            <div class="project-card loading" style="animation-delay: 0.5s;">
-                <img src="{% static 'project_images/chatbot.png' %}" alt="Chatbot screenshot" class="project-image" loading="lazy">
-                <h3>Chatbot Using Logistic Regression</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Streamlit</span>
-                    <span class="tech-tag">NLTK</span>
-                    <span class="tech-tag">Scikit-Learn</span>
-                </div>
-                <p>A simple and interactive chatbot built using Logistic Regression, TF-IDF Vectorization, and Streamlit for the interface. This chatbot uses predefined intents and patterns to provide relevant responses.</p>
-                <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Chatbot-Using-Logistic-Regression.git" rel="noopener" target="_blank" aria-label="Chatbot Logistic Regression GitHub">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="#" rel="noopener" target="_blank" aria-label="Chatbot Logistic Regression Live Demo">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
-            </div>
-            <div class="project-card loading" style="animation-delay: 0.6s;">
-                <img src="{% static 'project_images/Portfolio.png' %}" alt="Portfolio Website screenshot" class="project-image" loading="lazy">
-                <h3>Portfolio Website</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-                <p>Responsive personal portfolio website showcasing projects, skills, and experience. Features smooth animations, contact form with email integration, and admin panel for content management.</p>
-                <div class="project-links">
-                    <a href="https://github.com/SachinRawat1604/Portfolio.git" rel="noopener" target="_blank" aria-label="Portfolio Website GitHub">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://sachin-portfolio-rd6a.onrender.com" rel="noopener" target="_blank" aria-label="Portfolio Website Live Demo">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
+                {% empty %}
+                <p class="t-white t-center" style="grid-column: 1 / -1;">No projects added yet. Please add them via the admin panel.</p>
+                {% endfor %}
             </div>
         </div>
     </section>
 
-    <!-- Contact Me Section -->
+    <!-- Contact Form Section -->
     <section id="contact" class="m-b-1" tabindex="-1">
         <h1 class="t-center my-2 t-white f-2">Contact Me</h1>
         <div class="content-container flex s-around items-center h-50">
@@ -401,15 +306,20 @@
                         <input type="tel" name="number" id="number" class="popinss" placeholder="Enter your Phone Number" aria-label="Phone Number" autocomplete="tel" pattern="[0-9\-]{10,15}" required>
                     </div>
                     <div class="form-div">
-                        <textarea name="content" id="textarea" cols="30" rows="10" class="popinss" placeholder="Enter your Message" aria-label="Message" required></textarea>
+                        
+                        <textarea name="message" id="textarea" cols="30" rows="10" class="popinss" placeholder="Enter your Message" aria-label="Message" required></textarea>
                     </div>
                     <button type="submit" class="btn popinss" id="submit" aria-label="Submit Contact Form">Submit</button>
                 </form>
-                {% if success %}
-                    <p class="success-message" role="alert">Thank you for your message!</p>
-                {% endif %}
-                {% if error %}
-                    <p class="error-message" role="alert">There was an error sending your message. Please try again later.</p>
+                
+                {% if messages %}
+                    <div class="messages" style="margin-top: 1rem;">
+                        {% for message in messages %}
+                            <p class="{% if message.tags %}{{ message.tags }}-message{% endif %}" role="alert" style="color: {% if message.tags == 'success' %}#00ffff{% else %}#ff4d4d{% endif %};">
+                                {{ message }}
+                            </p>
+                        {% endfor %}
+                    </div>
                 {% endif %}
             </div>
         </div>
