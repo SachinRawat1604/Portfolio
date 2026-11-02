@@ -27,12 +27,28 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4&1(ol=q_$)rdt_-w*1k(^#(l3fpl$3-)7mv4$zx_qak#e8g+^')
-    
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-4&1(ol=q_$)rdt_-w*1k(^#(l3fpl$3-)7mv4$zx_qak#e8g+^')
 
-ALLOWED_HOSTS = ['RENDER_EXTERNAL_HOSTNAME', 'localhost', '127.0.0.1']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+allowed_hosts = config(
+    'DJANGO_ALLOWED_HOSTS',
+    default='',
+    cast=lambda value: [host.strip() for host in value.split(',') if host.strip()],
+)
+render_external_hostname = os.getenv('RENDER_EXTERNAL_HOSTNAME')
+if render_external_hostname:
+    allowed_hosts.append(render_external_hostname)
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '[::1]'] + allowed_hosts
+
+# Render sits behind a proxy, so trust the forwarded HTTPS scheme.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = [
+    f'https://{host}' for host in ALLOWED_HOSTS
+    if host and not host.startswith('http') and host not in {'localhost', '127.0.0.1', '0.0.0.0', '[::1]'}
+]
 
 
 # Application definition
