@@ -5,6 +5,7 @@ body {
     background-color: #0d0d0d;
     color: #ffffff;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 a {
@@ -339,6 +340,7 @@ html {
 
 .project-card {
     background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
@@ -580,6 +582,21 @@ textarea::placeholder {
 }
 
 /* ========== RESPONSIVE ========== */
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    .project-card {
+        background: rgba(255, 255, 255, 0.12);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 @media (max-width: 768px) {
     #home {
         flex-direction: column-reverse;
@@ -643,21 +660,6 @@ textarea::placeholder {
         font-size: 1.8rem;
     }
 }
-
-/* FIX: Moved animation outside the media query */
-.project-card.loading {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 .popinss, .popiness {
     font-family: 'Poppins', sans-serif;
